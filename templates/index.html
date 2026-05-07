@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<body class="container p-5">
+    <h1>Gestión de Registros Cloud</h1>
+    <form action="/agregar" method="POST" class="mb-4">
+        <input name="nombre" placeholder="Nombre" class="form-control mb-2" required>
+        <input name="detalle" placeholder="Detalle" class="form-control mb-2" required>
+        <button class="btn btn-success">Agregar Nuevo</button>
+    </form>
+    <table class="table">
+        <tr><th>ID</th><th>Nombre</th><th>Detalle</th><th>Acciones</th></tr>
+        {% for r in registros %}
+        <tr>
+            <td>{{ r.id }}</td><td>{{ r.nombre }}</td><td>{{ r.detalle }}</td>
+            <td>
+                <a href="/editar/{{r.id}}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="/eliminar/{{r.id}}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
